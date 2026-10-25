@@ -1,0 +1,7 @@
+{
+  "name": "Woosong Chillax Club",
+  "description": "The official student community website for Woosong Chillax Club in Daejeon, South Korea. Chill Together. Connect Across Cultures.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

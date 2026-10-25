@@ -1,0 +1,779 @@
+# WOOSONG CHILLAX CLUB — FINAL WEBSITE DESIGN & DEVELOPMENT PROMPT
+
+Act as an expert creative director, senior product designer, UX/UI designer, brand strategist, and full-stack developer.
+
+Design and build a complete, responsive, interactive website for **Woosong Chillax Club**, a student community at Woosong University in Daejeon, South Korea.
+
+The result must be a distinctive, high-quality digital experience that reflects the club's actual visual identity. Do not create a generic university club template, a corporate SaaS landing page, or an AI startup website.
+
+Build a recognizable student-community brand with bold typography, expressive graphics, strong visual hierarchy, meaningful interactions, and an inclusive user experience.
+
+Prioritize a polished, working frontend first. Implement backend features when the environment supports them, and clearly identify any integrations that require credentials or configuration.
+
+# 1. BRAND FOUNDATION
+
+**Official name:** Woosong Chillax Club
+
+**Brand name:** CHILLAX
+
+**Name meaning:** Chill + Relax
+
+**Official tagline:** "Chill Together. Connect Across Cultures."
+
+**Brand concept:**
+
+Chillax is a creative, social, AI-assisted student community where Korean and international students meet, relax, share cultures, explore ideas, play games, and make meaningful connections.
+
+The club helps students discover friendships and experiences beyond their usual social circles. Students should feel welcome whether they arrive with friends or alone, are naturally outgoing or shy, or have different levels of language proficiency.
+
+The club's three core ideas are:
+
+- CHILL — Relax, feel welcome, and enjoy university life.
+- CONNECT — Meet people and exchange cultures and perspectives.
+- CREATE — Play, explore, express ideas, and experience something new.
+
+AI should support the community through practical features such as multilingual assistance, activity suggestions, and event planning. It should never overshadow the human connection at the heart of the club.
+
+# 2. OFFICIAL CREATIVE DIRECTION
+
+The primary visual style is **playful Neo-Brutalism**, combining Brutalist web design, graffiti bubble lettering, youth-culture graphics, doodles, stickers, and expressive editorial layouts.
+
+The overall feeling should be:
+
+- Bold, not boring.
+- Raw, not messy.
+- Playful, not childish.
+- Contemporary, not corporate.
+- Expressive, not chaotic.
+- Accessible, not difficult to navigate.
+
+Take inspiration from contemporary streetwear graphics, independent magazines, creative studios, gaming culture, zines, sticker art, and experimental digital experiences.
+
+Use oversized typography, strong color blocks, hard borders, thick outlines, asymmetric compositions, deliberate whitespace, and playful graphic interruptions.
+
+The design should look intentionally art-directed rather than like a template with random colors and decorative elements.
+
+Avoid excessive glassmorphism, translucent floating cards, generic SaaS gradients, overly rounded UI, excessive shadows, and corporate dashboard aesthetics on public-facing pages.
+
+Neo-Brutalism must remain usable. Maintain clear navigation, readable text, consistent spacing, accessible controls, and an obvious information hierarchy.
+
+# 3. OFFICIAL COLOR PALETTE
+
+Use the following established palette consistently across the website.
+
+- Midnight Black: #0B0B0F
+- Pure White: #FFFFFF
+- Electric Lime: #C6FF00
+- Creative Purple: #9B5CFF
+- Electric Blue: #4388FF
+- Graphite: #22232B
+
+Color roles:
+
+**Midnight Black**
+Primary background, hero sections, major dark surfaces, and dramatic visual compositions.
+
+**Pure White**
+Main typography on dark backgrounds, logo artwork, high-contrast surfaces, and selected light sections.
+
+**Electric Lime**
+The signature accent. Use for primary buttons, important labels, event dates, highlighted text, selected controls, and calls to action.
+
+**Creative Purple**
+Use selectively for art, creative workshops, expressive graphics, and selected cultural activities.
+
+**Electric Blue**
+Use selectively for gaming experiences, interactive features, and selected social or cultural events.
+
+**Graphite**
+Secondary dark backgrounds, cards, dividers, and supporting surfaces.
+
+For a typical dark composition, start with an approximate balance of 55% black, 25% white, 12% lime, 4% purple, and 4% blue. Treat this as a guideline, not a rigid formula.
+
+Do not use every accent color with equal intensity in every section.
+
+Black, white, and lime should establish the core brand recognition. Purple and blue should add variety where appropriate.
+
+Use CSS variables or centralized theme tokens for all colors.
+
+For bright lime surfaces and buttons, use black text where it provides stronger contrast. Do not place small white text on lime without checking accessibility.
+
+Allow occasional white-background sections to break up long dark layouts while preserving the overall brand identity.
+
+# 4. LOGO AND BRAND ASSETS
+
+The approved CHILLAX logo is a graffiti-inspired wordmark with chunky white bubble lettering, a strong black-and-white outline, sparkles, a curved underline, and a distinctive open letter C.
+
+**The logo must be preserved as the primary brand signature.**
+
+If the existing logo file is supplied, use the actual asset. Do not recreate, replace, or approximate the logo with an unrelated font.
+
+Do not distort, stretch, squeeze, or arbitrarily rotate it.
+
+Do not add gradients, unnecessary shadows, or additional symbols to the primary logo.
+
+Maintain sufficient clear space around it.
+
+Use the white version on dark backgrounds. Use an approved black or accent variation only if the corresponding artwork exists or is intentionally created as a separate variant.
+
+If no logo asset is supplied, use a temporary typographic wordmark with a clear placeholder for the approved artwork. Do not claim that an approximation is the official logo.
+
+The complete logo should be recognizable in the header, footer, event posters, and social previews. A compact C-based mark may be used for small icons only if an approved variant is available.
+
+# 5. TYPOGRAPHY
+
+Use three complementary typefaces:
+
+**Display and hero headings:** Space Grotesk Bold.
+
+**Body and interface text:** Inter.
+
+**Dates, labels, categories, and metadata:** IBM Plex Mono.
+
+Use a maximum of three font families.
+
+Typography should be a central part of the design.
+
+Use oversized, bold headlines, compact uppercase labels, short supporting copy, and clearly structured event information.
+
+Monospaced typography should create an editorial or technical contrast without making the interface difficult to read.
+
+Use sentence case for most body copy and uppercase selectively for labels, section identifiers, and event metadata.
+
+Do not use the graffiti logo lettering as a substitute for readable body typography.
+
+# 6. GLOBAL WEBSITE EXPERIENCE
+
+Create the following pages:
+
+- Home
+- About
+- Events
+- Event Details
+- Fun Zone
+- Culture Hub
+- Gallery
+- Join Us
+- Contact
+- Protected Organizer Dashboard
+
+Suggested routes:
+
+/
+ /about
+ /events
+ /events/:slug
+ /fun-zone
+ /culture
+ /gallery
+ /join
+ /contact
+ /admin
+
+Use a responsive header, consistent footer, shared components, and clear navigation throughout.
+
+Desktop navigation should include the CHILLAX logo, Home, About, Events, Fun Zone, Culture Hub, Gallery, and a high-contrast Join Chillax button.
+
+Use a simple mobile navigation that preserves the visual identity without compromising usability.
+
+The interface should be easy to understand even for someone who has never heard of the club.
+
+Use lightweight, purposeful animation: subtle position changes, underlines, small graphic movements, and restrained scroll reveals.
+
+Respect reduced-motion settings.
+
+# 7. HOMEPAGE — COMPLETE LAYOUT
+
+## A. HERO SECTION
+
+Create a bold, immediately recognizable first screen.
+
+Use a Midnight Black background, oversized typography, the actual CHILLAX logo, and Electric Lime as the primary CTA color.
+
+Eyebrow:
+
+"WOOSONG UNIVERSITY · STUDENT CLUB"
+
+Main headline:
+
+"Less awkward. More connected."
+
+Supporting copy:
+
+"A place to make friends, explore cultures, play, create, and turn ordinary university days into memorable experiences."
+
+Primary CTA: "JOIN THE CLUB"
+
+Secondary CTA: "EXPLORE EVENTS"
+
+The primary CTA leads to Join Us. The secondary CTA leads to Events.
+
+Create an expressive, asymmetric composition with large typography and selected doodles, sparkles, graphic shapes, or playful sticker-like elements.
+
+The hero must feel like a creative campaign, not a standard corporate website header.
+
+Maintain strong readability and make the main action immediately visible.
+
+On mobile, recompose the artwork and typography instead of merely shrinking the desktop layout.
+
+## B. WELCOME SECTION
+
+Headline:
+
+"YOUR PEOPLE ARE OUT THERE."
+
+Copy:
+
+"Starting somewhere new can feel overwhelming. Chillax is a space to meet people naturally, share experiences, and feel more at home at Woosong. Come alone, bring a friend, or show up just to see what happens."
+
+Present three core ideas:
+
+CHILL
+Relax and enjoy university life.
+
+CONNECT
+Meet people and discover different perspectives.
+
+CREATE
+Try something new and make memories.
+
+Use bold typographic labels, high-contrast blocks, and authentic community imagery when available.
+
+## C. ACTIVITY CATEGORIES
+
+Headline:
+
+"DIFFERENT INTERESTS. ONE COMMUNITY."
+
+Create four distinctive activity cards.
+
+**01 — GAME & PLAY**
+
+Icebreakers, board games, party games, and friendly challenges.
+
+**02 — FOOD & CULTURE**
+
+Cultural food sharing, traditions, stories, and international experiences.
+
+**03 — CREATE & EXPRESS**
+
+Art, photography, music, creative projects, and idea-sharing.
+
+**04 — EXPLORE & CHILL**
+
+Café visits, city walks, local attractions, picnics, and relaxed hangouts.
+
+Use rectangular cards, bold borders, graphic labels, and controlled accent colors.
+
+Use purple for selected creative activities and blue for selected gaming activities. Lime remains the primary brand accent.
+
+Use varied card compositions while maintaining consistent information hierarchy.
+
+These are activity categories, not confirmed event listings.
+
+## D. UPCOMING EVENTS
+
+Headline:
+
+"WHAT'S HAPPENING?"
+
+Display published upcoming events.
+
+Every event card should show:
+- Event title.
+- Event image or poster.
+- Date and time.
+- Location.
+- Category.
+- Short description.
+- Cost, when known.
+- Registration status.
+- View Details or RSVP action.
+
+Use bold rectangular layouts, thick borders, large readable dates, and strong category labels.
+
+Provide category filters and a link to the full Events page.
+
+Event-specific purple or blue accents may be used, but the event cards must still feel like part of the same brand.
+
+If no events have been published, show a designed empty state:
+
+"NEW EXPERIENCES ARE IN THE WORKS."
+
+"Good things start with an idea. Check back soon or join the community to hear about upcoming activities."
+
+Do not present demo events as confirmed events.
+
+## E. FUN ZONE PREVIEW
+
+Headline:
+
+"BORED? LET'S FIX THAT."
+
+Supporting copy:
+
+"Pick a mood. Find an activity. Make a memory."
+
+Preview an interactive Random Fun Generator.
+
+Inputs:
+- Mood: Chill, Energetic, Creative, Social.
+- Budget: Free, Low-cost, Flexible.
+- Time: 15 minutes, 1 hour, Half a day.
+- Group size: Solo-friendly, Two people, Group.
+
+Generate a suitable activity with a description, estimated duration, budget category, and simple instructions.
+
+Use a local activity library initially, so the feature works without an AI API.
+
+Provide a CTA to the full Fun Zone.
+
+## F. CULTURE HUB PREVIEW
+
+Headline:
+
+"A LITTLE PIECE OF EVERYWHERE."
+
+Supporting copy:
+
+"Every person has a story, a tradition, or a perspective worth sharing."
+
+Preview cultural discoveries, useful language phrases, food and traditions, trivia, and student-submitted stories.
+
+Use a more expressive visual composition with authentic imagery and controlled color variation.
+
+Avoid stereotypical or overly simplistic country-themed graphics.
+
+Provide a clear link to the Culture Hub.
+
+## G. GALLERY PREVIEW
+
+Headline:
+
+"LITTLE MOMENTS. REAL CONNECTIONS."
+
+Create a visually varied gallery for event photos, creative projects, shared meals, cultural experiences, and community memories.
+
+Use actual club photos when available.
+
+Until real content exists, use an attractive placeholder state:
+
+"OUR STORY IS JUST GETTING STARTED."
+
+"The best memories haven't happened yet."
+
+Do not fabricate event photographs, testimonials, or community achievements.
+
+## H. FINAL CTA
+
+Headline:
+
+"YOUR NEXT FAVORITE MEMORY STARTS HERE."
+
+Supporting copy:
+
+"Meet someone new. Try something different. Find your people."
+
+Primary CTA: "JOIN CHILLAX"
+
+Use a dramatic black-and-white composition with Electric Lime as the primary accent and restrained graphic details.
+
+## I. FOOTER
+
+Include the CHILLAX logo, official tagline, short description, page links, Contact, Join Us, privacy information, and official social links when available.
+
+Use placeholders for unknown contact details. Never invent official social accounts or email addresses.
+
+# 8. ABOUT PAGE
+
+Headline:
+
+"MORE THAN A CLUB. A PLACE TO BELONG."
+
+Explain that Chillax is a creative, social, AI-assisted student community at Woosong University, designed to help students connect through shared activities, cultures, and experiences.
+
+Mission:
+
+"To create an inclusive campus community where students connect across cultures through fun, creativity, and shared experiences, with AI helping make participation more accessible and activities more personalized."
+
+Vision:
+
+"A campus where no student feels they have to experience university life alone, and where cultural differences become opportunities for friendship and discovery."
+
+Values:
+- Belonging.
+- Curiosity.
+- Creativity.
+- Respect.
+- Connection.
+
+Explain the meaning of the name Chillax: Chill + Relax.
+
+Use bold headlines, editorial layouts, clear sections, and real photographs when available.
+
+Explain that AI supports real-world relationships rather than replacing them.
+
+Do not invent founding stories, official endorsements, or achievements.
+
+# 9. EVENTS PAGE
+
+Build a functional event directory, not a static poster collection.
+
+Features:
+- Search by event title.
+- Category filters.
+- Upcoming and past events.
+- Optional calendar view.
+- Responsive event cards.
+- Individual event detail pages.
+- Registration status.
+- Empty, loading, and error states.
+
+Categories:
+Games, Culture, Food, Creativity, Exploration, Social.
+
+Each event should support:
+- Title and slug.
+- Description.
+- Cover image.
+- Category.
+- Start and end time.
+- Venue.
+- Cost.
+- Capacity.
+- Registration deadline.
+- Publication status.
+- Registration status.
+- Cancellation information.
+
+Use the Asia/Seoul time zone for event display.
+
+Each event detail page should show the date, time, location, description, cost, what to bring, participation notes, and RSVP form.
+
+Implement registration confirmation, capacity limits, and waitlist behavior when configured.
+
+Enforce registration rules on the server when a backend is connected.
+
+Provide an Add to Calendar action where practical.
+
+Never invent confirmed event details.
+
+# 10. FUN ZONE
+
+Create a dedicated interactive page with four experiences.
+
+## RANDOM FUN GENERATOR
+
+Generate activities based on mood, budget, time, and group size.
+
+Include:
+- Activity name.
+- Short description.
+- Instructions.
+- Estimated duration.
+- Budget category.
+- Regenerate action.
+
+Handle unmatched filter combinations gracefully.
+
+## ICEBREAKER GENERATOR
+
+Categories:
+- Funny.
+- Culture.
+- Getting to Know You.
+- Deep Conversations.
+- University Life.
+
+Example prompts:
+- What's a food from your country everyone should try?
+- What's one experience you want to have while studying in Korea?
+- What's a game you loved growing up?
+- What's something small that always makes your day better?
+- If we could explore any city together, where would you go?
+
+Show one question at a time, with category selection, a Next Question button, and a copy action.
+
+## TEAM CHALLENGES
+
+Include:
+- Guess the Language.
+- Cultural Trivia.
+- Collaborative Story Building.
+- Drawing Challenges.
+- Photo Scavenger Hunt.
+
+Each implemented game must have clear instructions and functional interactions.
+
+Mark unfinished games as coming soon rather than displaying nonfunctional buttons.
+
+## ACTIVITY IDEA BOARD
+
+Allow students to suggest activities with a title, description, category, optional budget, and duration.
+
+If connected to a backend, store submissions for organizer review.
+
+If no backend is configured, identify the interaction as a prototype rather than claiming the idea has been submitted.
+
+Use a neo-Brutalist visual treatment with bold labels, visible borders, and expressive graphic details.
+
+# 11. CULTURE HUB
+
+Create a searchable discovery experience with:
+- Cultural discoveries.
+- Useful phrases.
+- Food and traditions.
+- Trivia.
+- Student stories.
+- Language exchange topics.
+
+Allow users to browse and search published content.
+
+Support contributor-approved stories and appropriate moderation.
+
+Avoid stereotypes or claims that one person's experience represents an entire culture.
+
+AI-assisted translation may be introduced later, with human review for official content.
+
+# 12. GALLERY
+
+Support:
+- Event photographs.
+- Captions.
+- Event associations.
+- Creative submissions.
+- Category filters.
+- Image alt text.
+- Publication status.
+- Photo permission tracking.
+
+Use varied editorial compositions while maintaining visual consistency.
+
+Allow authorized organizers to publish, update, and remove images.
+
+Do not use fabricated event photos as real club memories.
+
+# 13. JOIN US PAGE
+
+Headline:
+
+"READY TO CHILL WITH US?"
+
+Supporting copy:
+
+"You don't need previous experience, a particular skill, or an existing friend group. Tell us a little about yourself and what you'd like to explore."
+
+Fields:
+- Full name.
+- University email.
+- Student status.
+- Interests.
+- Preferred language.
+- Optional message.
+- Consent to use the information to respond to the inquiry.
+
+Interest options:
+- Games and social activities.
+- Food and cultural exchange.
+- Art and creativity.
+- City exploration.
+- Language exchange.
+- AI and technology.
+
+Provide validation, accessible labels, useful error messages, spam protection when supported, and a clear success state after a real submission.
+
+If no backend is connected, clearly label the form as a prototype.
+
+Keep private membership information inaccessible to public visitors.
+
+# 14. CONTACT AND FAQ
+
+Create a simple Contact page with:
+- Contact inquiry form.
+- Official email placeholder.
+- Official social links when available.
+- FAQ.
+- Join CTA.
+
+FAQ topics:
+- Who can join?
+- Do I need to speak Korean or English fluently?
+- Do I need experience with games or art?
+- Are events free?
+- Can I suggest an activity?
+- Can I help organize activities?
+- How can I request language or accessibility support?
+
+Keep the content easy for authorized organizers to update.
+
+# 15. ORGANIZER DASHBOARD
+
+Create a protected administrative interface with:
+- Overview.
+- Event management.
+- RSVP management.
+- Membership inquiries.
+- Gallery management.
+- Culture story moderation.
+- Activity idea moderation.
+- Site settings.
+
+Organizers must be able to create, edit, publish, unpublish, and cancel events.
+
+They should be able to review membership inquiries and manage published content.
+
+Use real authentication and appropriate authorization.
+
+Do not expose participant information publicly.
+
+Do not rely on frontend-only checks to protect private data.
+
+If authentication is not configured, clearly identify the dashboard as a prototype.
+
+# 16. TECHNICAL IMPLEMENTATION
+
+Preferred stack when supported:
+- React.
+- TypeScript.
+- Vite.
+- Tailwind CSS.
+- Lucide icons.
+- Framer Motion for restrained animation.
+- Supabase or an equivalent service for database and authentication.
+
+Adapt the architecture to the chosen platform where appropriate.
+
+Use reusable components and centralized design tokens.
+
+Create components for:
+- Navigation.
+- Footer.
+- Buttons.
+- Event cards.
+- Activity cards.
+- Filters.
+- Forms.
+- Modals.
+- Accordions.
+- Gallery items.
+- Empty states.
+- Loading states.
+- Error states.
+- Dashboard navigation.
+
+Keep content and data separate from presentation.
+
+Use CSS variables for the official palette so the design can be adjusted globally.
+
+If a backend is connected, use structured tables for events, RSVPs, membership inquiries, gallery items, culture stories, activity suggestions, and authorized admin accounts.
+
+Apply appropriate database permissions and server-side validation.
+
+Keep all private API keys on the server.
+
+If credentials are unavailable, implement the working frontend first and document the remaining integration requirements.
+
+Do not claim that a database, authentication system, AI API, email delivery, or submission has been configured unless it actually has.
+
+# 17. ACCESSIBILITY AND RESPONSIVENESS
+
+Support desktop, laptop, tablet, and mobile.
+
+Maintain:
+- Readable text.
+- Strong color contrast.
+- Keyboard navigation.
+- Visible focus states.
+- Accessible form labels.
+- Meaningful image alt text.
+- Clear error messages.
+- Reduced-motion preferences.
+- Comfortable touch targets.
+- No unintended horizontal overflow.
+
+Neo-Brutalism is a visual direction, not permission to sacrifice usability.
+
+Make event information and joining instructions easy to find.
+
+Optimize images and avoid unnecessary dependencies.
+
+# 18. BRAND VOICE
+
+Chillax should sound friendly, confident, informal, and inclusive.
+
+Use concise and natural language.
+
+Avoid exaggerated marketing language, excessive slang, and generic corporate phrases.
+
+Use these brand messages where appropriate:
+- "Chill Together. Connect Across Cultures."
+- "Meet your people."
+- "Different cultures. Shared moments."
+- "Show up. Hang out. Try something new."
+- "Your next favorite memory starts here."
+
+The website should feel like it was created by students for students.
+
+# 19. DEVELOPMENT AND QUALITY ASSURANCE
+
+Build in stages.
+
+Stage 1: Establish the visual system, navigation, homepage, and shared components.
+
+Stage 2: Build the About, Events, Fun Zone, Culture Hub, Gallery, Join Us, and Contact pages.
+
+Stage 3: Implement real frontend interactions, filtering, activity generation, icebreakers, validation, and responsive navigation.
+
+Stage 4: Connect the database, event registration, membership inquiries, authentication, and organizer dashboard when supported.
+
+Stage 5: Add moderation workflows and secure AI features if required.
+
+Stage 6: Test the full experience.
+
+Verify:
+- Every navigation link.
+- Every CTA.
+- Every form.
+- Event filters and event states.
+- Activity generator combinations.
+- Mobile navigation.
+- Responsive layouts.
+- Keyboard accessibility.
+- Reduced-motion behavior.
+- Loading and error states.
+- Authentication and database permissions.
+
+Fix broken interactions and obvious visual defects before completing the build.
+
+# 20. FINAL DESIGN STANDARD
+
+The finished website must be a recognizable extension of the official Chillax creative identity.
+
+Use:
+- Playful Neo-Brutalism.
+- The established black-and-white foundation.
+- Electric Lime as the signature accent.
+- Purple and blue selectively.
+- The approved graffiti bubble logo.
+- Oversized Space Grotesk typography.
+- Strong borders and rectangular layouts.
+- Doodles, stickers, and expressive graphic elements.
+- Authentic community imagery when available.
+- Clear navigation and useful interactions.
+
+Avoid:
+- Generic SaaS aesthetics.
+- Excessive glassmorphism.
+- Excessively rounded cards.
+- Uncontrolled gradients.
+- Too many competing colors.
+- Chaotic typography.
+- Fake club data.
+- Decorative controls that do nothing.
+- Unsecured private data.
+
+Make the hero visually memorable, the Events page practical, the Fun Zone enjoyable, and joining the community effortless.
+
+The final result should look like a confident, student-led creative brand with a clear identity and a functional digital home.
+
+Begin by building the complete visual foundation and homepage. Continue through the remaining pages and interactions without stopping at a static landing page. Clearly identify any features that still require external configuration.

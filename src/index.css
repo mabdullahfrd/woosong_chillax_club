@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+@theme {
+  --color-midnight: #0B0B0F;
+  --color-pure-white: #FFFFFF;
+  --color-electric-lime: #C6FF00;
+  --color-creative-purple: #9B5CFF;
+  --color-electric-blue: #4388FF;
+  --color-graphite: #22232B;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+:root {
+  --midnight: #0B0B0F;
+  --pure-white: #FFFFFF;
+  --electric-lime: #C6FF00;
+  --creative-purple: #9B5CFF;
+  --electric-blue: #4388FF;
+  --graphite: #22232B;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0B0B0F;
+  color: #FFFFFF;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-mono {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Neo-Brutalism Design Utilities matching Reference Art Direction */
+.brutal-border {
+  border: 3px solid #000000;
+}
+
+.brutal-border-lime {
+  border: 3px solid #C6FF00;
+}
+
+.brutal-border-white {
+  border: 3px solid #FFFFFF;
+}
+
+.brutal-shadow {
+  box-shadow: 6px 6px 0px #000000;
+}
+
+.brutal-shadow-sm {
+  box-shadow: 3px 3px 0px #000000;
+}
+
+.brutal-shadow-lg {
+  box-shadow: 8px 8px 0px #000000;
+}
+
+.brutal-shadow-lime {
+  box-shadow: 6px 6px 0px #C6FF00;
+}
+
+.brutal-shadow-lime-lg {
+  box-shadow: 8px 8px 0px #C6FF00;
+}
+
+.brutal-shadow-purple {
+  box-shadow: 6px 6px 0px #9B5CFF;
+}
+
+.brutal-shadow-blue {
+  box-shadow: 6px 6px 0px #4388FF;
+}
+
+.brutal-shadow-white {
+  box-shadow: 6px 6px 0px #FFFFFF;
+}
+
+.brutal-btn {
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.brutal-btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px #000000;
+}
+
+.brutal-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #000000;
+}
+
+.brutal-btn-lime {
+  background-color: #C6FF00;
+  color: #000000;
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.brutal-btn-lime:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px #000000;
+  background-color: #d4ff26;
+}
+
+.brutal-btn-lime:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #000000;
+}
+
+.brutal-btn-dark {
+  background-color: #0B0B0F;
+  color: #FFFFFF;
+  border: 3px solid #C6FF00;
+  box-shadow: 4px 4px 0px #C6FF00;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.brutal-btn-dark:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px #C6FF00;
+  background-color: #171821;
+}
+
+.brutal-btn-dark:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #C6FF00;
+}
+
+/* Reference 1 Style: Stacked heavy underlined headline block */
+.brutal-underlined-block span {
+  display: inline-block;
+  border-bottom: 3.5px solid #000000;
+  padding-bottom: 2px;
+  line-height: 1.25;
+}
+
+/* Ticker Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0B0F;
+}
+::-webkit-scrollbar-thumb {
+  background: #22232B;
+  border: 2px solid #C6FF00;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C6FF00;
+}
+
