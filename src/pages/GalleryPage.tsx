@@ -137,6 +137,9 @@ export const GalleryPage: React.FC = () => {
                     src={item.imageUrl}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = IMAGES.campusHangout;
+                    }}
                   />
                   <div className="absolute top-2 left-2">
                     <span className="text-[10px] font-mono font-bold bg-[#0B0B0F] text-[#C6FF00] px-2.5 py-0.5 border border-black uppercase">
@@ -192,6 +195,9 @@ export const GalleryPage: React.FC = () => {
                   src={selectedPhoto.imageUrl}
                   alt={selectedPhoto.title}
                   className="max-h-[60vh] w-auto object-contain"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = IMAGES.campusHangout;
+                  }}
                 />
               </div>
 

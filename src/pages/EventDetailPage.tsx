@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { Sticker, TapeStrip } from '../components/BrutalGraphics';
+import { IMAGES } from '../data/mockData';
 import { 
   ArrowLeft, 
   Calendar, 
@@ -143,6 +144,9 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({ slug, navigate
               src={event.coverImage}
               alt={event.title}
               className="w-full h-full object-cover"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = IMAGES.campusHangout;
+              }}
             />
             <div className="absolute top-4 left-4 flex gap-2">
               <span className="font-mono text-xs font-bold bg-[#C6FF00] text-black px-3 py-1 border border-black uppercase">

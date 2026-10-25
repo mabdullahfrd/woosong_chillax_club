@@ -11,7 +11,7 @@ import {
   BackgroundGraffitiDoodle 
 } from '../components/BrutalGraphics';
 import { useApp } from '../context/AppContext';
-import { FUN_ACTIVITIES, FunActivity } from '../data/mockData';
+import { FUN_ACTIVITIES, FunActivity, IMAGES } from '../data/mockData';
 import { 
   ArrowRight, 
   Calendar, 
@@ -179,10 +179,13 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
                 {/* Main Photo Frame */}
                 <div className="relative bg-[#22232B] border-4 border-black overflow-hidden z-10">
                   <img
-                    src="/src/assets/images/chillax_campus_hangout_1792761422085.jpg"
+                    src={IMAGES.campusHangout}
                     alt="Woosong Chillax Club students hanging out"
                     className="w-full h-84 sm:h-96 object-cover"
                     loading="eager"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = '/images/chillax_campus_hangout_1792761422085.jpg';
+                    }}
                   />
                   
                   {/* Streetwear Cross Motif (Reference 3) */}
@@ -538,6 +541,9 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
                           src={evt.coverImage}
                           alt={evt.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          onError={(e) => {
+                            (e.currentTarget as HTMLImageElement).src = IMAGES.campusHangout;
+                          }}
                         />
                         <div className="absolute top-3 left-3">
                           <span className={`text-xs font-mono font-black px-3 py-1 border-2 border-black uppercase ${
@@ -945,6 +951,9 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
                     src={item.imageUrl}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = IMAGES.campusHangout;
+                    }}
                   />
                   <div className="absolute top-2 left-2">
                     <span className="text-[10px] font-mono font-black bg-black text-[#C6FF00] px-2 py-0.5 border border-black uppercase">

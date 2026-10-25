@@ -42,6 +42,12 @@ export const ChillaxLogo: React.FC<ChillaxLogoProps> = ({
         alt="Woosong Chillax Club Official Logo"
         className={`${heightClass} w-auto object-contain pointer-events-none drop-shadow-md`}
         loading="eager"
+        onError={(e) => {
+          const target = e.currentTarget as HTMLImageElement;
+          if (target.src.indexOf('Screenshot') !== -1) {
+            target.src = '/chillax_logo.png';
+          }
+        }}
       />
     </div>
   );

@@ -1,9 +1,14 @@
+import campusHangoutImg from '../assets/images/chillax_campus_hangout_1792761422085.jpg';
+import culturalFoodImg from '../assets/images/chillax_cultural_food_1792761421731.jpg';
+import creativeJamImg from '../assets/images/chillax_creative_jam_1792761423100.jpg';
+import daejeonExploreImg from '../assets/images/chillax_daejeon_explore_1792761423098.jpg';
+
 // Image assets generated for Woosong Chillax Club
 export const IMAGES = {
-  campusHangout: "/src/assets/images/chillax_campus_hangout_1792761422085.jpg",
-  culturalFood: "/src/assets/images/chillax_cultural_food_1792761421731.jpg",
-  creativeJam: "/src/assets/images/chillax_creative_jam_1792761423100.jpg",
-  daejeonExplore: "/src/assets/images/chillax_daejeon_explore_1792761423098.jpg",
+  campusHangout: campusHangoutImg || '/images/chillax_campus_hangout_1792761422085.jpg',
+  culturalFood: culturalFoodImg || '/images/chillax_cultural_food_1792761421731.jpg',
+  creativeJam: creativeJamImg || '/images/chillax_creative_jam_1792761423100.jpg',
+  daejeonExplore: daejeonExploreImg || '/images/chillax_daejeon_explore_1792761423098.jpg',
 };
 
 export interface EventItem {

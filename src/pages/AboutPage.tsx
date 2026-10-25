@@ -133,6 +133,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigate }) => {
                     src={IMAGES.campusHangout}
                     alt="Students hanging out in the club lounge"
                     className="w-full h-80 object-cover"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = '/images/chillax_campus_hangout_1792761422085.jpg';
+                    }}
                   />
                   <TapeStrip className="absolute -top-1 left-4 z-20" />
                   <div className="p-4 bg-[#0B0B0F] border-t-2 border-black text-xs font-mono text-zinc-300 flex items-center justify-between">

@@ -8,8 +8,21 @@ import {
   CULTURE_ITEMS, 
   GalleryItem, 
   INITIAL_GALLERY,
-  UserInquiry
+  UserInquiry,
+  IMAGES
 } from '../data/mockData';
+
+const sanitizeImg = (src?: string): string => {
+  if (!src) return IMAGES.campusHangout;
+  if (src.includes('chillax_campus_hangout')) return IMAGES.campusHangout;
+  if (src.includes('chillax_cultural_food')) return IMAGES.culturalFood;
+  if (src.includes('chillax_creative_jam')) return IMAGES.creativeJam;
+  if (src.includes('chillax_daejeon_explore')) return IMAGES.daejeonExplore;
+  if (src.startsWith('/src/assets/images/')) {
+    return src.replace('/src/assets/images/', '/images/');
+  }
+  return src;
+};
 
 interface AppContextType {
   events: EventItem[];
@@ -47,10 +60,19 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Load from localStorage or defaults
+  // Load from localStorage or defaults, with automatic URL sanitization
   const [events, setEvents] = useState<EventItem[]>(() => {
     const saved = localStorage.getItem('chillax_events');
-    return saved ? JSON.parse(saved) : INITIAL_EVENTS;
+    if (!saved) return INITIAL_EVENTS;
+    try {
+      const parsed: EventItem[] = JSON.parse(saved);
+      return parsed.map((e) => ({
+        ...e,
+        coverImage: sanitizeImg(e.coverImage),
+      }));
+    } catch {
+      return INITIAL_EVENTS;
+    }
   });
 
   const [myRsvps, setMyRsvps] = useState<string[]>(() => {
@@ -70,7 +92,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>(() => {
     const saved = localStorage.getItem('chillax_gallery');
-    return saved ? JSON.parse(saved) : INITIAL_GALLERY;
+    if (!saved) return INITIAL_GALLERY;
+    try {
+      const parsed: GalleryItem[] = JSON.parse(saved);
+      return parsed.map((g) => ({
+        ...g,
+        imageUrl: sanitizeImg(g.imageUrl),
+      }));
+    } catch {
+      return INITIAL_GALLERY;
+    }
   });
 
   const [inquiries, setInquiries] = useState<UserInquiry[]>(() => {

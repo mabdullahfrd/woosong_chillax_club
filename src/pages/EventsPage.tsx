@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
-import { EventItem } from '../data/mockData';
+import { EventItem, IMAGES } from '../data/mockData';
 import { WorkableActivityCalendar } from '../components/WorkableActivityCalendar';
 import { MarqueeTicker, BarcodeStrip } from '../components/BrutalGraphics';
 import { 
@@ -177,6 +177,9 @@ export const EventsPage: React.FC<EventsPageProps> = ({ navigate }) => {
                             src={evt.coverImage}
                             alt={evt.title}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                              (e.currentTarget as HTMLImageElement).src = IMAGES.campusHangout;
+                            }}
                           />
                           <div className="absolute top-2 left-2">
                             <span className="text-[11px] font-mono font-bold bg-[#C6FF00] text-black px-2.5 py-0.5 border border-black uppercase">
