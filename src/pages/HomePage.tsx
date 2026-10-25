@@ -135,19 +135,19 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
               {/* Primary & Secondary Action Buttons */}
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <button
-                  onClick={() => navigate('/join')}
-                  className="brutal-btn-lime text-black px-7 sm:px-9 py-4 text-sm sm:text-base cursor-pointer flex items-center gap-2.5"
+                  onClick={() => navigate('/signup')}
+                  className="brutal-btn-lime text-black px-7 sm:px-9 py-4 text-sm sm:text-base cursor-pointer flex items-center gap-2.5 font-black"
                 >
-                  <span>JOIN THE CLUB</span>
+                  <span>SIGN UP / JOIN CLUB</span>
                   <ArrowRight className="w-5 h-5" />
                 </button>
 
                 <button
-                  onClick={() => navigate('/events')}
+                  onClick={() => navigate('/calendar')}
                   className="brutal-btn bg-[#22232B] hover:bg-[#2e303b] text-white font-display font-bold text-sm sm:text-base px-6 sm:px-8 py-4 uppercase tracking-wide cursor-pointer flex items-center gap-2 border-3 border-black"
                 >
                   <Calendar className="w-4 h-4 text-[#C6FF00]" />
-                  <span>EXPLORE EVENTS</span>
+                  <span>ACTIVITY CALENDAR</span>
                 </button>
               </div>
 
@@ -621,13 +621,19 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
           )}
 
           {/* Full Events Link */}
-          <div className="mt-12 text-center">
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button
+              onClick={() => navigate('/calendar')}
+              className="brutal-btn bg-[#C6FF00] text-black font-display font-black text-sm px-8 py-3.5 uppercase tracking-wider inline-flex items-center gap-2.5 hover:bg-[#b8f000]"
+            >
+              <span>Open Workable Activity Calendar</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
             <button
               onClick={() => navigate('/events')}
-              className="brutal-btn-dark font-display font-black text-sm px-8 py-3.5 uppercase tracking-wider inline-flex items-center gap-2.5"
+              className="brutal-btn-dark font-display font-bold text-sm px-8 py-3.5 uppercase tracking-wider inline-flex items-center gap-2.5"
             >
-              <span>View Full Events Calendar & Directory</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Full Event Directory</span>
             </button>
           </div>
 

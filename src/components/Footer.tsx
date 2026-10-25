@@ -1,13 +1,14 @@
 import React from 'react';
 import { ChillaxLogo } from './ChillaxLogo';
 import { BarcodeStrip, StarburstBadge } from './BrutalGraphics';
-import { MapPin, Mail, Sparkles, MessageCircle, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { MapPin, Mail, Sparkles, MessageCircle, ArrowUpRight, ShieldCheck, Zap } from 'lucide-react';
 
 interface FooterProps {
   navigate: (path: string) => void;
+  onReplayIntro?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ navigate }) => {
+export const Footer: React.FC<FooterProps> = ({ navigate, onReplayIntro }) => {
   const handleNav = (path: string) => {
     navigate(path);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -49,13 +50,23 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
             </h4>
             <ul className="space-y-2 text-sm font-display">
               <li>
-                <button onClick={() => handleNav('/about')} className="text-zinc-300 hover:text-white hover:underline flex items-center gap-1">
-                  About the Club
+                <button onClick={() => handleNav('/calendar')} className="text-[#C6FF00] hover:underline flex items-center gap-1 font-bold">
+                  Activity Calendar & Planner
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNav('/signup')} className="text-white hover:underline flex items-center gap-1 font-bold">
+                  Sign Up & Member Pass
                 </button>
               </li>
               <li>
                 <button onClick={() => handleNav('/events')} className="text-zinc-300 hover:text-white hover:underline flex items-center gap-1">
-                  Upcoming Events & Calendar
+                  Upcoming Meetups
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNav('/about')} className="text-zinc-300 hover:text-white hover:underline flex items-center gap-1">
+                  About the Club
                 </button>
               </li>
               <li>
@@ -122,6 +133,19 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
               FAQ & Guidelines
             </button>
             <span aria-hidden="true">·</span>
+            {onReplayIntro && (
+              <>
+                <button
+                  onClick={onReplayIntro}
+                  className="hover:text-[#C6FF00] flex items-center gap-1.5 text-zinc-400 transition-colors cursor-pointer group"
+                  title="Replay Site Entrance Animation"
+                >
+                  <Zap className="w-3 h-3 text-[#C6FF00] group-hover:scale-110 transition-transform" />
+                  <span>Replay Intro</span>
+                </button>
+                <span aria-hidden="true">·</span>
+              </>
+            )}
             <button onClick={() => handleNav('/admin')} className="hover:text-[#C6FF00] flex items-center gap-1 text-zinc-400">
               <ShieldCheck className="w-3 h-3" />
               <span>Organizer Portal</span>

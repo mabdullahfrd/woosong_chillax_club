@@ -22,16 +22,21 @@ interface AppContextType {
   announcement: string;
   loginAdmin: (passcode: string) => boolean;
   logoutAdmin: () => void;
-  rsvpEvent: (slug: string, attendee: { name: string; email: string }) => { success: boolean; message: string; waitlisted?: boolean };
+  rsvpEvent: (slug: string, attendee: { name: string; email: string; notes?: string }) => { success: boolean; message: string; waitlisted?: boolean };
   cancelRsvp: (slug: string, email: string) => void;
   submitJoinApplication: (data: Omit<UserInquiry, 'id' | 'submittedAt' | 'status'>) => { id: string };
+  registerMember: (data: Omit<UserInquiry, 'id' | 'submittedAt' | 'status'> & { studentId?: string; dietaryNotes?: string }) => { id: string; memberPassId: string };
   submitIdea: (idea: Omit<ActivityIdea, 'id' | 'votes' | 'status' | 'submittedAt'>) => void;
   voteIdea: (id: string) => void;
   submitStory: (story: Omit<CultureItem, 'id'>) => void;
   submitPhoto: (photo: Omit<GalleryItem, 'id' | 'likes' | 'permissionGranted'>) => void;
   likePhoto: (id: string) => void;
-  // Admin actions
+  // Activity / Event planning actions ("Workable Calendar")
   createEvent: (event: Omit<EventItem, 'id' | 'registeredCount'>) => void;
+  updateEvent: (id: string, updated: Partial<EventItem>) => void;
+  deleteEvent: (id: string) => void;
+  togglePrepChecklistItem: (eventId: string, taskId: string) => void;
+  addPrepChecklistItem: (eventId: string, task: string) => void;
   updateEventStatus: (id: string, isPublished: boolean) => void;
   cancelEventAction: (id: string) => void;
   updateInquiryStatus: (id: string, status: UserInquiry['status']) => void;
@@ -147,7 +152,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     sessionStorage.removeItem('chillax_admin_auth');
   };
 
-  const rsvpEvent = (slug: string, attendee: { name: string; email: string }) => {
+  const rsvpEvent = (slug: string, attendee: { name: string; email: string; notes?: string }) => {
     const targetEvent = events.find(e => e.slug === slug);
     if (!targetEvent) return { success: false, message: "Event not found" };
 
@@ -161,6 +166,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const newAttendee = {
       name: attendee.name,
       email: attendee.email,
+      notes: attendee.notes,
       registeredAt: new Date().toISOString()
     };
 
@@ -294,6 +300,61 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setIdeas(prev => prev.map(idea => idea.id === id ? { ...idea, status } : idea));
   };
 
+  const registerMember = (data: Omit<UserInquiry, 'id' | 'submittedAt' | 'status'> & { studentId?: string; dietaryNotes?: string }) => {
+    const newId = `inq-${Date.now().toString().slice(-4)}`;
+    const passNum = Math.floor(1000 + Math.random() * 9000);
+    const memberPassId = `WX-2026-${passNum}`;
+    const newInquiry: UserInquiry = {
+      ...data,
+      id: newId,
+      submittedAt: new Date().toISOString().split('T')[0],
+      status: 'Pending',
+      message: data.message ? `${data.message} [Pass: ${memberPassId}]` : `[Pass: ${memberPassId}]`
+    };
+    setInquiries(prev => [newInquiry, ...prev]);
+    return { id: newId, memberPassId };
+  };
+
+  const updateEvent = (id: string, updated: Partial<EventItem>) => {
+    setEvents(prev => prev.map(evt => evt.id === id ? { ...evt, ...updated } : evt));
+  };
+
+  const deleteEvent = (id: string) => {
+    setEvents(prev => prev.filter(evt => evt.id !== id));
+  };
+
+  const togglePrepChecklistItem = (eventId: string, taskId: string) => {
+    setEvents(prev => prev.map(evt => {
+      if (evt.id === eventId && evt.prepChecklist) {
+        return {
+          ...evt,
+          prepChecklist: evt.prepChecklist.map(item => 
+            item.id === taskId ? { ...item, done: !item.done } : item
+          )
+        };
+      }
+      return evt;
+    }));
+  };
+
+  const addPrepChecklistItem = (eventId: string, task: string) => {
+    if (!task.trim()) return;
+    setEvents(prev => prev.map(evt => {
+      if (evt.id === eventId) {
+        const newTask = {
+          id: `task-${Date.now()}`,
+          task: task.trim(),
+          done: false
+        };
+        return {
+          ...evt,
+          prepChecklist: [...(evt.prepChecklist || []), newTask]
+        };
+      }
+      return evt;
+    }));
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -310,12 +371,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         rsvpEvent,
         cancelRsvp,
         submitJoinApplication,
+        registerMember,
         submitIdea,
         voteIdea,
         submitStory,
         submitPhoto,
         likePhoto,
         createEvent,
+        updateEvent,
+        deleteEvent,
+        togglePrepChecklistItem,
+        addPrepChecklistItem,
         updateEventStatus,
         cancelEventAction,
         updateInquiryStatus,

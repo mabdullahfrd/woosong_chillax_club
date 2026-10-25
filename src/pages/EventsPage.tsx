@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { EventItem } from '../data/mockData';
+import { WorkableActivityCalendar } from '../components/WorkableActivityCalendar';
 import { MarqueeTicker, BarcodeStrip } from '../components/BrutalGraphics';
 import { 
   Search, 
@@ -263,73 +264,9 @@ export const EventsPage: React.FC<EventsPageProps> = ({ navigate }) => {
           </div>
         )}
 
-        {/* View Mode: Calendar Matrix */}
+        {/* View Mode: Interactive Workable Activity Calendar */}
         {viewMode === 'calendar' && (
-          <div className="bg-[#22232B] border-2 border-black p-6 brutal-shadow">
-            <div className="flex items-center justify-between mb-6 pb-4 border-b border-black">
-              <h3 className="font-display font-black text-xl text-white uppercase">
-                November 2026 · Daejeon Campus Calendar
-              </h3>
-              <span className="font-mono text-xs text-[#C6FF00]">
-                Asia/Seoul (KST)
-              </span>
-            </div>
-
-            <div className="grid grid-cols-7 gap-2 text-center text-xs font-mono font-bold text-zinc-400 mb-2">
-              <div>SUN</div>
-              <div>MON</div>
-              <div>TUE</div>
-              <div>WED</div>
-              <div>THU</div>
-              <div className="text-[#C6FF00]">FRI (CHILLAX DAY)</div>
-              <div>SAT</div>
-            </div>
-
-            {/* Simulated November 2026 Calendar days */}
-            <div className="grid grid-cols-7 gap-2">
-              {/* Day 1 starts on Sunday in Nov 2026 */}
-              {Array.from({ length: 30 }).map((_, i) => {
-                const dayNum = i + 1;
-                // Fridays in Nov 2026: 6, 13, 20, 27
-                const eventOnDay = events.find(e => {
-                  const day = new Date(e.startTime).getDate();
-                  return day === dayNum;
-                });
-
-                return (
-                  <div
-                    key={dayNum}
-                    className={`min-h-24 p-2 border border-black flex flex-col justify-between text-left transition-colors ${
-                      eventOnDay
-                        ? 'bg-[#0B0B0F] border-[#C6FF00] hover:bg-black cursor-pointer'
-                        : 'bg-[#181920]'
-                    }`}
-                    onClick={() => eventOnDay && navigate(`/events/${eventOnDay.slug}`)}
-                  >
-                    <div className="flex justify-between items-start">
-                      <span className={`font-mono text-xs font-bold ${eventOnDay ? 'text-[#C6FF00]' : 'text-zinc-500'}`}>
-                        {dayNum}
-                      </span>
-                      {eventOnDay && (
-                        <span className="w-2 h-2 rounded-full bg-[#C6FF00] animate-pulse" />
-                      )}
-                    </div>
-
-                    {eventOnDay && (
-                      <div className="mt-2">
-                        <p className="text-[11px] font-display font-bold text-white line-clamp-2 leading-tight">
-                          {eventOnDay.title}
-                        </p>
-                        <p className="text-[9px] font-mono text-[#C6FF00] mt-1">
-                          {eventOnDay.displayTime.split('–')[0]}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          <WorkableActivityCalendar navigate={navigate} initialViewMode="month" />
         )}
 
       </div>

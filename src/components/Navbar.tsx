@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { ChillaxLogo } from './ChillaxLogo';
-import { Menu, X, ShieldAlert, Sparkles, Calendar, HeartHandshake, Compass, Image as GalleryIcon } from 'lucide-react';
+import { Menu, X, ShieldAlert, Sparkles, Calendar, HeartHandshake, Compass, Image as GalleryIcon, CalendarDays, Zap } from 'lucide-react';
 
 interface NavbarProps {
   currentPath: string;
   navigate: (path: string) => void;
+  onReplayIntro?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
+export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate, onReplayIntro }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'About', path: '/about', icon: Sparkles },
+    { label: 'Calendar', path: '/calendar', icon: CalendarDays },
     { label: 'Events', path: '/events', icon: Calendar },
+    { label: 'About', path: '/about', icon: Sparkles },
     { label: 'Fun Zone', path: '/fun-zone', icon: Compass },
     { label: 'Culture Hub', path: '/culture', icon: HeartHandshake },
     { label: 'Gallery', path: '/gallery', icon: GalleryIcon },
@@ -36,14 +38,26 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
             Chill Together. Connect Across Cultures. · Every Friday in Daejeon, Korea
           </span>
         </div>
-        <button
-          onClick={() => handleNavClick('/admin')}
-          className="hidden md:inline-flex items-center gap-1.5 text-xs hover:underline font-mono ml-4 text-black font-black shrink-0"
-          title="Organizer Dashboard"
-        >
-          <ShieldAlert className="w-3.5 h-3.5" />
-          <span>Organizer Portal</span>
-        </button>
+        <div className="flex items-center gap-2">
+          {onReplayIntro && (
+            <button
+              onClick={onReplayIntro}
+              className="hidden sm:inline-flex items-center gap-1 text-[11px] hover:underline font-mono ml-4 text-black font-black shrink-0 cursor-pointer"
+              title="Replay Site Entrance Animation"
+            >
+              <Zap className="w-3 h-3 text-black fill-black" />
+              <span>FX INTRO</span>
+            </button>
+          )}
+          <button
+            onClick={() => handleNavClick('/admin')}
+            className="hidden md:inline-flex items-center gap-1.5 text-xs hover:underline font-mono ml-2 text-black font-black shrink-0"
+            title="Organizer Dashboard"
+          >
+            <ShieldAlert className="w-3.5 h-3.5" />
+            <span>Organizer Portal</span>
+          </button>
+        </div>
       </div>
 
       {/* Main 3-Zone Navigation Header */}
@@ -102,10 +116,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
         {/* Zone 3: Primary Action */}
         <div className="flex items-center gap-3 shrink-0">
           <button
-            onClick={() => handleNavClick('/join')}
-            className="brutal-btn-lime text-black text-xs sm:text-sm px-5 py-2.5 uppercase tracking-wide cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0"
+            onClick={() => handleNavClick('/signup')}
+            className="brutal-btn-lime text-black text-xs sm:text-sm px-5 py-2.5 uppercase tracking-wide cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 font-black"
           >
-            <span>JOIN CHILLAX</span>
+            <span>SIGN UP</span>
             <span className="font-mono text-xs">→</span>
           </button>
 
@@ -155,15 +169,29 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
             <span className="font-mono text-xs text-zinc-400">→</span>
           </button>
           <div className="pt-2 border-t border-zinc-800 flex items-center justify-between">
-            <button
-              onClick={() => handleNavClick('/admin')}
-              className="text-xs font-mono text-zinc-400 hover:text-[#C6FF00] flex items-center gap-1.5 p-2"
-            >
-              <ShieldAlert className="w-3.5 h-3.5" />
-              <span>Organizer Portal</span>
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => handleNavClick('/admin')}
+                className="text-xs font-mono text-zinc-400 hover:text-[#C6FF00] flex items-center gap-1.5 p-1"
+              >
+                <ShieldAlert className="w-3.5 h-3.5" />
+                <span>Organizer</span>
+              </button>
+              {onReplayIntro && (
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onReplayIntro();
+                  }}
+                  className="text-xs font-mono text-[#C6FF00] flex items-center gap-1 p-1 hover:underline"
+                >
+                  <Zap className="w-3.5 h-3.5" />
+                  <span>Replay Intro</span>
+                </button>
+              )}
+            </div>
             <span className="text-[11px] font-mono text-zinc-500">
-              Daejeon, South Korea
+              Daejeon, Korea
             </span>
           </div>
         </div>

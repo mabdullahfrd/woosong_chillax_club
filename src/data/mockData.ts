@@ -29,10 +29,55 @@ export interface EventItem {
   accentColor: string; // 'lime' | 'purple' | 'blue'
   whatToBring: string[];
   participationNotes: string;
-  attendees?: { name: string; email: string; registeredAt: string }[];
+  attendees?: { name: string; email: string; registeredAt: string; notes?: string; status?: string }[];
+  status?: 'Confirmed' | 'Planning' | 'Volunteers Needed';
+  hostName?: string;
+  prepChecklist?: { id: string; task: string; done: boolean }[];
+  tags?: string[];
 }
 
 export const INITIAL_EVENTS: EventItem[] = [
+  {
+    id: "evt-0",
+    slug: "autumn-lawn-acoustic-picnic",
+    title: "Autumn Campus Lawn Acoustic Picnic & Games",
+    category: "Social",
+    coverImage: IMAGES.campusHangout,
+    description: "Bring a blanket, sip hot citron tea (yuja-cha), and unwind on Woosong West lawn with easy acoustic tunes and lawn games.",
+    fullDetails: "Before the November chill settles in, we take over the Woosong West grassy quad for an open afternoon picnic. Acoustic guitars, casual Spikeball and Uno rounds, and hot Korean roasted sweet potatoes (gun-goguma).",
+    startTime: "2026-10-30T17:00:00+09:00",
+    endTime: "2026-10-30T19:30:00+09:00",
+    displayDate: "Fri, Oct 30, 2026",
+    displayTime: "17:00 – 19:30 KST",
+    venue: "Woosong West Campus Main Lawn (In front of W1)",
+    venueNotes: "In case of rain, moved inside to W1 Student Center 1st Floor.",
+    cost: "Free (Hot tea & sweet potatoes provided)",
+    capacity: 40,
+    registeredCount: 34,
+    registrationDeadline: "2026-10-29T23:59:00+09:00",
+    isPublished: true,
+    accentColor: "lime",
+    hostName: "Min-jun Kim & Sarah Lee",
+    status: "Confirmed",
+    tags: ["Outdoor", "Acoustic", "Autumn Vibe"],
+    whatToBring: [
+      "Woosong student ID",
+      "Warm hoodie or scarf",
+      "Optional: acoustic instrument or picnic blanket"
+    ],
+    participationNotes: "Open seating and easy drop-in format.",
+    prepChecklist: [
+      { id: "p0-1", task: "Reserve picnic blankets & electric hot water dispenser", done: true },
+      { id: "p0-2", task: "Purchase sweet potatoes and yuja-cha jars from mart", done: true },
+      { id: "p0-3", task: "Set up acoustic guitar microphones and speakers", done: true },
+      { id: "p0-4", task: "Confirm rain contingency room with facilities", done: true }
+    ],
+    attendees: [
+      { name: "Min-jun Kim", email: "minjun.k@wsu.ac.kr", registeredAt: "2026-10-20" },
+      { name: "Elena Rostova", email: "elena.r@wsu.ac.kr", registeredAt: "2026-10-21" },
+      { name: "Kwon Ji-hoon", email: "jihoon.k@wsu.ac.kr", registeredAt: "2026-10-22" }
+    ]
+  },
   {
     id: "evt-1",
     slug: "global-tteokbokki-dumpling-swap",
@@ -53,12 +98,25 @@ export const INITIAL_EVENTS: EventItem[] = [
     registrationDeadline: "2026-11-05T23:59:00+09:00",
     isPublished: true,
     accentColor: "lime",
+    hostName: "Azizbek R. & Min-jun K.",
+    status: "Confirmed",
+    tags: ["Cooking", "Halal Friendly", "Street Food"],
     whatToBring: [
       "Your student ID card",
       "An empty stomach and an open mind",
       "Optional: 1 small snack or tea from your home country to share"
     ],
-    participationNotes: "All ingredients are clearly labeled for allergens (nuts, gluten, dairy) and dietary preferences (halal, vegetarian)."
+    participationNotes: "All ingredients are clearly labeled for allergens (nuts, gluten, dairy) and dietary preferences (halal, vegetarian).",
+    prepChecklist: [
+      { id: "p1-1", task: "Book W3 kitchen counter & portable induction burners", done: true },
+      { id: "p1-2", task: "Buy rice cakes, gochujang, cream sauce, and halal chicken", done: true },
+      { id: "p1-3", task: "Print ingredient allergen flags & bilingual recipe cards", done: false },
+      { id: "p1-4", task: "Assign 4 student kitchen assistants", done: true }
+    ],
+    attendees: [
+      { name: "Lucas Hernandez", email: "lucas.h@wsu.ac.kr", registeredAt: "2026-10-23" },
+      { name: "Kim Min-ji", email: "minji.k@wsu.ac.kr", registeredAt: "2026-10-23" }
+    ]
   },
   {
     id: "evt-2",
@@ -80,11 +138,20 @@ export const INITIAL_EVENTS: EventItem[] = [
     registrationDeadline: "2026-11-12T23:59:00+09:00",
     isPublished: true,
     accentColor: "blue",
+    hostName: "Da-eun Park & Kenji Sato",
+    status: "Confirmed",
+    tags: ["Board Games", "Nintendo Switch", "Casual Tournament"],
     whatToBring: [
       "Woosong University student ID",
       "Comfortable shoes"
     ],
-    participationNotes: "Solo attendees will be automatically grouped into friendly welcome tables so you never sit alone."
+    participationNotes: "Solo attendees will be automatically grouped into friendly welcome tables so you never sit alone.",
+    prepChecklist: [
+      { id: "p2-1", task: "Inspect 22 board games for missing cards and dice", done: true },
+      { id: "p2-2", task: "Borrow HDMI projector and extension cords for Nintendo Switch", done: true },
+      { id: "p2-3", task: "Purchase snacks, sparkling water, and iced green tea", done: false },
+      { id: "p2-4", task: "Print rule summary sheets in Korean & English", done: false }
+    ]
   },
   {
     id: "evt-3",
@@ -106,11 +173,20 @@ export const INITIAL_EVENTS: EventItem[] = [
     registrationDeadline: "2026-11-19T23:59:00+09:00",
     isPublished: true,
     accentColor: "purple",
+    hostName: "Chloe Dupont & Ji-won Han",
+    status: "Planning",
+    tags: ["Sticker Printing", "Zines", "Neo-Brutalism Art"],
     whatToBring: [
       "Any doodles, sketches or digital illustrations you want to print (optional)",
       "Creativity and good vibes"
     ],
-    participationNotes: "No art background required. Our creative leads teach easy stencil and collage techniques."
+    participationNotes: "No art background required. Our creative leads teach easy stencil and collage techniques.",
+    prepChecklist: [
+      { id: "p3-1", task: "Order holographic vinyl sticker sheets & thermal rolls", done: true },
+      { id: "p3-2", task: "Set up 3 photo printer workstations in W7 Room 210", done: false },
+      { id: "p3-3", task: "Collect old Korean street and pop culture magazines for collaging", done: true },
+      { id: "p3-4", task: "Prepare Neo-Brutalist typography stamps and inks", done: false }
+    ]
   },
   {
     id: "evt-4",
@@ -132,12 +208,21 @@ export const INITIAL_EVENTS: EventItem[] = [
     registrationDeadline: "2026-11-26T18:00:00+09:00",
     isPublished: true,
     accentColor: "lime",
+    hostName: "Hyun-woo Bae & Mateo Silva",
+    status: "Confirmed",
+    tags: ["City Walk", "Bakery Run", "Daejeon Vibes"],
     whatToBring: [
       "T-Money or subway transit card",
       "Warm evening jacket",
       "Phone / camera for city snaps"
     ],
-    participationNotes: "Event currently at capacity! Sign up to join the waiting list — cancellations usually open 2-3 spots."
+    participationNotes: "Event currently at capacity! Sign up to join the waiting list — cancellations usually open 2-3 spots.",
+    prepChecklist: [
+      { id: "p4-1", task: "Scout route from Daedong station to Eunhaeng-dong rooftop cafe", done: true },
+      { id: "p4-2", task: "Pre-book seating for 20 at Cafe Myeong", done: true },
+      { id: "p4-3", task: "Prepare Subway group transit instructions for exchange students", done: true },
+      { id: "p4-4", task: "Create KakaoTalk location share group for easy rendezvous", done: false }
+    ]
   },
   {
     id: "evt-5",
@@ -151,15 +236,55 @@ export const INITIAL_EVENTS: EventItem[] = [
     endTime: "2026-12-04T20:30:00+09:00",
     displayDate: "Fri, Dec 4, 2026",
     displayTime: "18:00 – 20:30 KST",
-    venue: "Woosong West Campus Student Union Hall",
+    venue: "Woosong West Campus Student Union Hall (W1-104)",
     cost: "Free",
     capacity: 50,
     registeredCount: 31,
     registrationDeadline: "2026-12-03T23:59:00+09:00",
     isPublished: true,
     accentColor: "blue",
+    hostName: "Yujin Song & Alex Vance",
+    status: "Volunteers Needed",
+    tags: ["Language Exchange", "Icebreakers", "Friendship Match"],
     whatToBring: ["Good humor and enthusiasm"],
-    participationNotes: "Bilingual facilitators available at every table to bridge any language gap seamlessly."
+    participationNotes: "Bilingual facilitators available at every table to bridge any language gap seamlessly.",
+    prepChecklist: [
+      { id: "p5-1", task: "Generate 50 bilingual conversation prompt flashcards", done: true },
+      { id: "p5-2", task: "Recruit 6 bilingual table cheerleaders / facilitators", done: false },
+      { id: "p5-3", task: "Prepare interval chime sound on Spotify / sound system", done: false },
+      { id: "p5-4", task: "Set up 10 circular speed tables with nametags", done: false }
+    ]
+  },
+  {
+    id: "evt-6",
+    slug: "korean-calligraphy-tote-bag-customizing",
+    title: "Hangul Calligraphy & Custom Tote Bag Workshop",
+    category: "Culture",
+    coverImage: IMAGES.creativeJam,
+    description: "Learn beautiful Hangul stroke calligraphy from design seniors and silkscreen your favorite phrase onto heavy canvas tote bags.",
+    fullDetails: "Hands-on Korean calligraphy with modern street aesthetic. Choose a word (like CHILLAX, 인연 (destiny), or your Korean name) and print it on black or natural canvas totes using textile fabric inks.",
+    startTime: "2026-12-11T17:30:00+09:00",
+    endTime: "2026-12-11T20:00:00+09:00",
+    displayDate: "Fri, Dec 11, 2026",
+    displayTime: "17:30 – 20:00 KST",
+    venue: "Woosong Creative Media Studio (W7 Building, Room 204)",
+    cost: "Free (Tote bag + inks provided)",
+    capacity: 30,
+    registeredCount: 18,
+    registrationDeadline: "2026-12-10T23:59:00+09:00",
+    isPublished: true,
+    accentColor: "purple",
+    hostName: "Seo-yeon Jung & Club Leads",
+    status: "Planning",
+    tags: ["Hangul", "Tote Bags", "Craft Workshop"],
+    whatToBring: ["Clothes you don't mind getting a tiny paint speck on"],
+    participationNotes: "Each participant takes home 1 customized tote bag.",
+    prepChecklist: [
+      { id: "p6-1", task: "Order 40 heavy canvas blank tote bags", done: true },
+      { id: "p6-2", task: "Mix black, white, and electric lime textile screen inks", done: false },
+      { id: "p6-3", task: "Prepare heat press irons for fixing paint onto fabric", done: false },
+      { id: "p6-4", task: "Print guide sheets for basic Hangul brush strokes", done: true }
+    ]
   }
 ];
 

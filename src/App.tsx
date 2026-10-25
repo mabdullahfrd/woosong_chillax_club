@@ -10,13 +10,23 @@ import { FunZonePage } from './pages/FunZonePage';
 import { CultureHubPage } from './pages/CultureHubPage';
 import { GalleryPage } from './pages/GalleryPage';
 import { JoinPage } from './pages/JoinPage';
+import { SignUpPage } from './pages/SignUpPage';
+import { ActivityCalendarPage } from './pages/ActivityCalendarPage';
 import { ContactPage } from './pages/ContactPage';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
+import { IntroSplashAnimation } from './components/IntroSplashAnimation';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
     return window.location.pathname || '/';
   });
+  const [showIntro, setShowIntro] = useState<boolean>(true);
+  const [introKey, setIntroKey] = useState<number>(1);
+
+  const handleReplayIntro = () => {
+    setIntroKey((prev) => prev + 1);
+    setShowIntro(true);
+  };
 
   useEffect(() => {
     const handlePopState = () => {
@@ -56,8 +66,11 @@ export default function App() {
     if (currentPath === '/gallery') {
       return <GalleryPage />;
     }
-    if (currentPath === '/join') {
-      return <JoinPage navigate={navigate} />;
+    if (currentPath === '/calendar') {
+      return <ActivityCalendarPage navigate={navigate} />;
+    }
+    if (currentPath === '/signup' || currentPath === '/join') {
+      return <SignUpPage navigate={navigate} />;
     }
     if (currentPath === '/contact') {
       return <ContactPage navigate={navigate} />;
@@ -72,12 +85,18 @@ export default function App() {
 
   return (
     <AppProvider>
+      {showIntro && (
+        <IntroSplashAnimation
+          key={introKey}
+          onComplete={() => setShowIntro(false)}
+        />
+      )}
       <div className="min-h-screen flex flex-col bg-[#0B0B0F] text-white selection:bg-[#C6FF00] selection:text-black">
-        <Navbar currentPath={currentPath} navigate={navigate} />
+        <Navbar currentPath={currentPath} navigate={navigate} onReplayIntro={handleReplayIntro} />
         <main className="flex-1">
           {renderPage()}
         </main>
-        <Footer navigate={navigate} />
+        <Footer navigate={navigate} onReplayIntro={handleReplayIntro} />
       </div>
     </AppProvider>
   );
